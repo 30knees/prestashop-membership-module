@@ -613,7 +613,24 @@ class Membership extends Module
             return '';
         }
 
-        $id_product = isset($params['product']) ? (int) $params['product']->id : 0;
+        $id_product = 0;
+        if (isset($params['product'])) {
+            $product = $params['product'];
+
+            if (is_array($product) || $product instanceof ArrayAccess) {
+                if (isset($product['id_product'])) {
+                    $id_product = (int) $product['id_product'];
+                } elseif (isset($product['id'])) {
+                    $id_product = (int) $product['id'];
+                }
+            } elseif (is_object($product)) {
+                if (isset($product->id)) {
+                    $id_product = (int) $product->id;
+                } elseif (isset($product->id_product)) {
+                    $id_product = (int) $product->id_product;
+                }
+            }
+        }
         if (!$id_product) {
             return '';
         }
