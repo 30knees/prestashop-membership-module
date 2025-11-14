@@ -1,0 +1,29 @@
+{
+    "name": "prestashop/membership",
+    "description": "Customer Membership module for PrestaShop - Enable customers to purchase memberships for special pricing",
+    "type": "prestashop-module",
+    "license": "AFL-3.0",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5"
+    },
+    "config": {
+        "prepend-autoloader": false,
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "classmap-authoritative": true
+    },
+    "autoload": {
+        "psr-4": {
+            "PrestaShop\\Module\\Membership\\": "src/"
+        },
+        "classmap": [
+            "membership.php"
+        ]
+    }
+}
